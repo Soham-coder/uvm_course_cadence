@@ -1,0 +1,25 @@
+  // Testbench code for integrating a register model
+
+
+  // Register model and HBUS adapter handles
+  yapp_router_regs_t  yapp_rm;
+  hbus_reg_adapter    reg2hbus;
+
+ // build phase
+ // register model
+ yapp_rm = yapp_router_regs_t::type_id::create("yapp_rm",this);
+ yapp_rm.build();
+ yapp_rm.lock_model();
+ yapp_rm.set_hdl_path_root("hw_top.dut");
+
+ // This is implicit prediction, so make sure auto_predict is turned on.
+ //  Default is to have an explicit predictor and auto_predict disabled
+ yapp_rm.default_map.set_auto_predict(1);
+
+ // Create the adapter 
+ reg2hbus= hbus_reg_adapter::type_id::create("reg2bus",this);
+
+ // connect phase:
+ // set sequencer and adapter of register model
+ yapp_rm.default_map.set_sequencer(hbus.masters[0].sequencer, reg2hbus);
+

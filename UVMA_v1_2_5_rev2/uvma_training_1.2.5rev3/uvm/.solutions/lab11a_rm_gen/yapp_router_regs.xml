@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<!-- REQUIRED HEADER INFO - DOES NOT END UP IN ANY GENERATED SV FILES -->
+<spirit:component
+   xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009"
+   xmlns:cadence="http://www.cadence.com/SPIRIT/1685-2009/vendorExtensions"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.cadence.com/SPIRIT/1685-2009/vendorExtensions
+     http://www.cadence.com/SPIRIT/1685-2009/vendorExtensions/cadenceSpiritVendorExtensions.xsd
+     http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009
+     http://www.accellera.org/images/xmlschema/spirit/1685-2009/index.xsd">
+<!--http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009/index.xsd"-->
+      <spirit:vendor>Cadence_Design_Systems</spirit:vendor>
+<!-- REQUIRED HEADER INFO - DOES NOT END UP IN ANY GENERATED SV FILES -->
+
+      <spirit:library>Yapp_Registers</spirit:library>
+	<spirit:name>yapp_router_regs</spirit:name>
+	<spirit:version>1.5</spirit:version>
+ <!-- START OF ADDRESS MAP DEFINITION -->
+   <!-- YAPP Registers and Memories, router_rtl.sv v 2.0--> 
+        <!--Required for schema validation -->
+	<spirit:memoryMaps>     
+	    <spirit:memoryMap>
+            <!-- This will be the name of the model, unless overriden with a model generator option -->
+
+	    <spirit:name>router</spirit:name>
+      
+        <!-- To use yapp_model.yapp_regs.ctrl_reg.read(status, data, parent.this); -->
+        <!-- First address block is for registers, yapp_registers -->
+        <spirit:addressBlock>
+	    <spirit:name>yapp_regs</spirit:name>
+	    <spirit:baseAddress>0x1000</spirit:baseAddress>
+            <spirit:typeIdentifier>yapp_regs_c</spirit:typeIdentifier>
+	    <spirit:range>0x10</spirit:range> 
+	    <spirit:width>8</spirit:width>
+
+            <!-- Start adding the registers -->
+            <!-- For each register:
+                 Name = name of the register used by the model
+                 Offset = the offset of the register from the address Block it is defined.  This is used by FRONTDOOR Accesse
+                 Access = Register Access will be distributed amonst the fields in iregGen, the field access will override the 
+                          register access
+                 Reset value = Will be distributed amongst the fields
+              --> 
+     
+           
+	    <!-- ctrl_reg -->
+	       <spirit:register>
+		     <spirit:name>ctrl_reg</spirit:name>
+		     <spirit:addressOffset>0x00</spirit:addressOffset>
+                     <spirit:typeIdentifier>ctrl_reg_c</spirit:typeIdentifier>
+		     <spirit:size>8</spirit:size>
+           
+		     <spirit:access>read-write</spirit:access>
+		     <spirit:reset>
+		     <spirit:value>0x3f</spirit:value>  <!-- default of 63 for packet len and 0 for the address -->
+		     <spirit:mask>0x3f</spirit:mask>
+		     </spirit:reset>
+				<spirit:field>
+					<spirit:name>plen</spirit:name>
+					<spirit:bitOffset>0</spirit:bitOffset>
+					<spirit:bitWidth>6</spirit:bitWidth>
+					<!-- Each field is added as an hdl slice, this is only used for DPI back door 
+                                            This MUST match what is implemented for the RTL.  A field may or may not be 
+                                            physically attached to the register that it is defined in.  This is to support
+                                            Bit slicing to build registers that do not exist-->
+					<spirit:vendorExtensions>
+	                                   <cadence:extensions>
+		                              <cadence:hdlAccess cadence:path="pkt_len_fld"/>
+	                                   </cadence:extensions>
+					</spirit:vendorExtensions>
+				</spirit:field>
+				
+		     <spirit:vendorExtensions>
+			<!-- constraint used in randomization of the model. This randomization will force a size of 1 for 
+                             a packet size.  This makes legal randomization when performing randomization on the block -->
+			<vendorExtensions:constraint>c_packet_size  { plen.value >= 1; plen.value &lt;= 6'h3f; }
+			</vendorExtensions:constraint>
+			
+	                   <cadence:extensions>
+		                   <cadence:hdlAccess cadence:path="ctrl_reg"/>
+	                   </cadence:extensions>
+		     </spirit:vendorExtensions>
+
+		  </spirit:register>
+				<!-- Yapp Enable features register.  Each field is and indidual bit slice  -->
+				<spirit:register>
+					<spirit:name>en_reg</spirit:name>
+					<spirit:addressOffset>0x01</spirit:addressOffset>
+			                <spirit:typeIdentifier>en_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-write</spirit:access>
+					<spirit:reset>
+						<spirit:value>0x01</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:field>
+						<spirit:name>router_en</spirit:name>
+						<spirit:bitOffset>0</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+                                                   <cadence:extensions>
+		                                      <cadence:hdlAccess cadence:path="router_en_fld"/>
+	                                           </cadence:extensions>
+						</spirit:vendorExtensions>
+					</spirit:field>
+					<spirit:field>
+						<spirit:name>parity_err_cnt_en</spirit:name>
+						<spirit:bitOffset>1</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                           <cadence:extensions>
+		                                      <cadence:hdlAccess cadence:path="parity_err_cnt_en_fld"/>
+	                                           </cadence:extensions>
+						</spirit:vendorExtensions>
+					</spirit:field>
+					<spirit:field>
+						<spirit:name>oversized_pkt_cnt_en</spirit:name>
+						<spirit:bitOffset>2</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="len_err_cnt_en_fld"/>
+	                                          </cadence:extensions>
+						</spirit:vendorExtensions>		  
+					</spirit:field>
+					
+					<spirit:field>
+						<spirit:name>addr0_cnt_en</spirit:name>
+						<spirit:bitOffset>4</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr0_cnt_en_fld"/>
+	                                          </cadence:extensions>
+						</spirit:vendorExtensions>		  
+					</spirit:field>
+					<spirit:field>
+						<spirit:name>addr1_cnt_en</spirit:name>
+						<spirit:bitOffset>5</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr1_cnt_en_fld"/>
+	                                          </cadence:extensions>
+						</spirit:vendorExtensions>
+					</spirit:field>
+					<spirit:field>
+						<spirit:name>addr2_cnt_en</spirit:name>
+						<spirit:bitOffset>6</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr2_cnt_en_fld"/>
+	                                          </cadence:extensions>
+						</spirit:vendorExtensions>		  
+					</spirit:field>
+					<spirit:field>
+						<spirit:name>addr3_cnt_en</spirit:name>
+						<spirit:bitOffset>7</spirit:bitOffset>
+						<spirit:bitWidth>1</spirit:bitWidth>
+						<spirit:vendorExtensions>
+							<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="illegal_addr_cnt_en_fld"/>
+	                                          </cadence:extensions>
+						</spirit:vendorExtensions>		  
+					</spirit:field>	 
+    			  <spirit:vendorExtensions>
+						
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="en_reg"/>
+	                                          </cadence:extensions>
+						
+					</spirit:vendorExtensions>
+				</spirit:register>	
+				<spirit:register>
+					<spirit:name>parity_err_cnt_reg</spirit:name>
+					<spirit:addressOffset>0x04</spirit:addressOffset>
+	                                <spirit:typeIdentifier>parity_err_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+					
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="parity_err_cnt_reg"/>
+	                                          </cadence:extensions>
+					</spirit:vendorExtensions>
+				</spirit:register>
+				<spirit:register>
+					<spirit:name>oversized_pkt_cnt_reg</spirit:name>
+					<spirit:addressOffset>0x05</spirit:addressOffset>
+					<spirit:typeIdentifier>oversized_pkt_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+						
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="max_pkt_len_err_cnt_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>
+				<spirit:register>
+					<spirit:name>addr3_cnt_reg</spirit:name>
+                    			<spirit:addressOffset>0x06</spirit:addressOffset>
+					<spirit:typeIdentifier>illegal_addr_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+						
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="illegal_addr_cnt_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>
+	
+				<spirit:register>
+					<spirit:name>addr0_cnt_reg</spirit:name>
+					<spirit:addressOffset>0x9</spirit:addressOffset>
+					<spirit:typeIdentifier>addr0_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr0_cnt_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>
+				<spirit:register>
+					<spirit:name>addr1_cnt_reg</spirit:name>
+					<spirit:addressOffset>0xa</spirit:addressOffset>
+					<spirit:typeIdentifier>addr1_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr1_cnt_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>
+				<spirit:register>
+					<spirit:name>addr2_cnt_reg</spirit:name>
+					<spirit:addressOffset>0xb</spirit:addressOffset>
+					<spirit:typeIdentifier>addr2_cnt_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+						
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="addr2_cnt_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>	 	 	 
+
+
+
+				<spirit:register>
+					<spirit:name>mem_size_reg</spirit:name>
+					<spirit:addressOffset>0xd</spirit:addressOffset>
+					<spirit:typeIdentifier>mem_size_reg_c</spirit:typeIdentifier>
+					<spirit:size>8</spirit:size>
+					<spirit:access>read-only</spirit:access>
+					<spirit:reset>
+						<spirit:value>0x00</spirit:value>
+						<spirit:mask>0xff</spirit:mask>
+					</spirit:reset>
+					<spirit:vendorExtensions>
+						
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="last_pkt_size_reg"/>
+	                                          </cadence:extensions>
+						<vendorExtensions:collect_coverage>cov_all</vendorExtensions:collect_coverage>
+					</spirit:vendorExtensions>
+				</spirit:register>	 
+	   
+				<spirit:vendorExtensions>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="reg_file"/>
+	                                          </cadence:extensions>
+				</spirit:vendorExtensions>
+			</spirit:addressBlock> 
+			
+			<spirit:addressBlock>
+				<spirit:name>yapp_mem</spirit:name>
+				<spirit:baseAddress>0x1100</spirit:baseAddress>
+		                <spirit:typeIdentifier>yapp_mem_c</spirit:typeIdentifier>
+				<spirit:range>0x100</spirit:range>
+				<spirit:width>8</spirit:width>
+				<spirit:usage>memory</spirit:usage>
+				
+			        	
+				<spirit:access>read-write</spirit:access> 
+				 
+
+				<spirit:vendorExtensions>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="reg_file.memory"/>
+	                                          </cadence:extensions>
+				</spirit:vendorExtensions>
+			</spirit:addressBlock>
+
+	<spirit:addressBlock>
+				<spirit:name>yapp_pkt_mem</spirit:name>
+				<spirit:baseAddress>0x1010</spirit:baseAddress>
+                                <spirit:typeIdentifier>yapp_pkt_mem_c</spirit:typeIdentifier>
+				<spirit:range>0x40</spirit:range>
+				<spirit:width>8</spirit:width>
+				<spirit:usage>memory</spirit:usage>
+				
+			        	
+				<spirit:access>read-only</spirit:access> 
+				 
+
+				<spirit:vendorExtensions>
+	                                          <cadence:extensions>
+		                                          <cadence:hdlAccess cadence:path="reg_file.last_pkt_mem"/>
+	                                          </cadence:extensions>
+					
+            
+                                      
+				</spirit:vendorExtensions>
+			</spirit:addressBlock>
+
+
+
+		</spirit:memoryMap>
+	</spirit:memoryMaps>  
+
+	<spirit:vendorExtensions>
+	<cadence:extensions>
+		<cadence:hdlAccess cadence:path="top.dut"/>
+	</cadence:extensions>
+	</spirit:vendorExtensions>
+</spirit:component>

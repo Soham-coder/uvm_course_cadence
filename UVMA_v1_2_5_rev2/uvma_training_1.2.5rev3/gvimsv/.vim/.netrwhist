@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/export/home/bdickins/coursecode/uvm_reg_training_17_04_rev1/.solution/lab10_regapi/tb'
+let g:netrw_dirhist_2='/export/home/bdickins/codetest/uvm_local_constraint/lab05_seq/sv'
+let g:netrw_dirhist_3='/export/home/bdickins/codetest/uvm_config_obj/sv'
+let g:netrw_dirhist_4='/export/home/bdickins/codetest/uvm_config_obj/tb'
+let g:netrw_dirhist_5='/export/home/bdickins/vimtest'
+let g:netrw_dirhist_6='/export/home/bdickins/coursecode/essential_sv_for_uvm/essential_sv_for_uvmv1.2.5rev2/lab1_intro'
+let g:netrw_dirhist_7='/export/home/bdickins/coursecode/essential_sv_for_uvm/essential_sv_for_uvmv1.2.5rev2/lab5_component'
+let g:netrw_dirhist_8='/export/home/bdickins/coursecode/essential_sv_for_uvm/essential_sv_for_uvmv1.2.5rev2/lab6_vc'
+let g:netrw_dirhist_9='/export/home/bdickins/coursecode/essential_sv_for_uvm/essential_sv_for_uvmv1.2.5rev2/solutions'

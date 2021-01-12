@@ -1,0 +1,57 @@
+Activation command: reg_verifier -domain uvmreg -top yapp_router_regs.xml -dut_name yapp_router_regs -out_file yapp_router_regs -cov -quicktest -pkg yapp_router_reg_pkg
+------------------
+Runnning glue64.116.1s released 2017-06-09T16:17:16.834697+00:00 build-tag: jenkins-11_manual_build_glue_64_release-29
+
+Packaged as 17.04.008-s released 2017-07-09T12:02:11.825071+00:00
+
+Command Line Arguments:
+    -headless
+    -logfile ./reg_verifier_dir/reg_verifier
+    -execute /tmp/reg_verifier_31784.js
+Environment:
+
+
+Initializing
+
+Initialize time (ms): 765
+
+Package main.init() done.
+
+(----------29 April 2019 2:12:07 pm----------)
+
+Loading script /tmp/reg_verifier_31784.js
+
+*** Warning: An existing application process is being replaced
+
+Reading XML file yapp_router_regs.xml
+
+Parsing yapp_router_regs.xml
+
+Adding ipxact source library location ./
+
+Importing ipxact source yapp_router_regs.xml
+
+Checking existence of license: Xcelium_Single_Core at 2:12:09.91777 pm
+
+License Xcelium_Single_Core exists
+
+Generating code for domain 'uvmreg' in dir '/export/home/bdickins/coursecode/uvma_training_1.2.5rev1/uvm/.solutions/lab11a_rm_gen/reg_verifier_dir/uvmreg'
+
+  Generating yapp_router_regs_rdb.sv ...
+
+  Generating yapp_router_regs_config.dat ...
+
+  Generating yapp_router_regs_hdlpaths.dat ...
+
+  Generating files for quicktest.sv & Makefile ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 3029
+
+Execution done - exiting.
+
+(----------29 April 2019 2:12:10 pm----------)
+

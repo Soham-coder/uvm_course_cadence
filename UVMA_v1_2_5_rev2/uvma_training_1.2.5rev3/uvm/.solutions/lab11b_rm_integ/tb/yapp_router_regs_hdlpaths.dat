@@ -1,0 +1,23 @@
+ 
+r router_yapp_regs.addr0_cnt_reg addr0_cnt_reg 0 RTL 0 8
+r router_yapp_regs.addr1_cnt_reg addr1_cnt_reg 0 RTL 0 8
+r router_yapp_regs.addr2_cnt_reg addr2_cnt_reg 0 RTL 0 8
+r router_yapp_regs.addr3_cnt_reg illegal_addr_cnt_reg 0 RTL 0 8
+r router_yapp_regs.ctrl_reg ctrl_reg 0 RTL 0 8
+f router_yapp_regs.ctrl_reg.plen pkt_len_fld 0 RTL 0 6
+r router_yapp_regs.en_reg en_reg 0 RTL 0 8
+f router_yapp_regs.en_reg.router_en router_en_fld 0 RTL 0 1
+f router_yapp_regs.en_reg.parity_err_cnt_en parity_err_cnt_en_fld 0 RTL 1 1
+f router_yapp_regs.en_reg.oversized_pkt_cnt_en len_err_cnt_en_fld 0 RTL 2 1
+f router_yapp_regs.en_reg.addr0_cnt_en addr0_cnt_en_fld 0 RTL 4 1
+f router_yapp_regs.en_reg.addr1_cnt_en addr1_cnt_en_fld 0 RTL 5 1
+f router_yapp_regs.en_reg.addr2_cnt_en addr2_cnt_en_fld 0 RTL 6 1
+f router_yapp_regs.en_reg.addr3_cnt_en illegal_addr_cnt_en_fld 0 RTL 7 1
+r router_yapp_regs.mem_size_reg last_pkt_size_reg 0 RTL 0 8
+r router_yapp_regs.oversized_pkt_cnt_reg max_pkt_len_err_cnt_reg 0 RTL 0 8
+r router_yapp_regs.parity_err_cnt_reg parity_err_cnt_reg 0 RTL 0 8
+m router_yapp_mem reg_file.memory 0 RTL 0 256
+m router_yapp_pkt_mem reg_file.last_pkt_mem 0 RTL 0 64
+b router_yapp_regs reg_file 0 RTL 0 0
+
+

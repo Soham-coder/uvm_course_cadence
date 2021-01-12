@@ -1,0 +1,20 @@
+DEFAULT -rwc
+PATH top.dut.reg_file.addr0_cnt_en_fld +rw
+PATH top.dut.reg_file.addr0_cnt_reg +rw
+PATH top.dut.reg_file.addr1_cnt_en_fld +rw
+PATH top.dut.reg_file.addr1_cnt_reg +rw
+PATH top.dut.reg_file.addr2_cnt_en_fld +rw
+PATH top.dut.reg_file.addr2_cnt_reg +rw
+PATH top.dut.reg_file.ctrl_reg +rw
+PATH top.dut.reg_file.en_reg +rw
+PATH top.dut.reg_file.illegal_addr_cnt_en_fld +rw
+PATH top.dut.reg_file.illegal_addr_cnt_reg +rw
+PATH top.dut.reg_file.last_pkt_mem +rw
+PATH top.dut.reg_file.last_pkt_size_reg +rw
+PATH top.dut.reg_file.len_err_cnt_en_fld +rw
+PATH top.dut.reg_file.max_pkt_len_err_cnt_reg +rw
+PATH top.dut.reg_file.memory +rw
+PATH top.dut.reg_file.parity_err_cnt_en_fld +rw
+PATH top.dut.reg_file.parity_err_cnt_reg +rw
+PATH top.dut.reg_file.pkt_len_fld +rw
+PATH top.dut.reg_file.router_en_fld +rw

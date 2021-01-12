@@ -1,0 +1,5 @@
+setenv XCELIUM_ROOT "/cds/avs/install/xcelium/1903/19.03.002/"
+setenv MDV_ROOT "/cds/avs/install/mdv/1803/18.03.005"
+setenv PATH "${PATH}:${XCELIUM_ROOT}/tools/bin:${MDV_ROOT}/tools/bin"
+setenv UVMHOME  "${XCELIUM_ROOT}/tools/methodology/UVM/CDNS-1.1d"
+

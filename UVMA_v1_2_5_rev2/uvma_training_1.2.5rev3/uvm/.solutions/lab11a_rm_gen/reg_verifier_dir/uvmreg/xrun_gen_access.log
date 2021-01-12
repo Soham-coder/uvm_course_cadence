@@ -1,0 +1,270 @@
+xrun: 17.04-s014: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	xrun	17.04-s014: Started on Apr 29, 2019 at 14:17:54 BST
+xrun
+	-uvmhome default
+	+uvm_set_config_string=*,uvm_reg_generate_access_file_seq::file_name,access_file
+	./cdns_uvmreg_utils_pkg.sv
+	./yapp_router_regs_rdb.sv
+	./quicktest.sv
+	-log xrun_gen_access.log
+	+UVM_TESTNAME=access_test
+
+   User defined plus("+") options:
+	+uvm_set_config_string=*,uvm_reg_generate_access_file_seq::file_name,access_file
+
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d
+file: ./cdns_uvmreg_utils_pkg.sv
+	package worklib.cdns_uvmreg_utils_pkg:sv
+		errors: 0, warnings: 0
+file: ./yapp_router_regs_rdb.sv
+	package worklib.yapp_router_reg_pkg:sv
+		errors: 0, warnings: 0
+file: ./quicktest.sv
+package uvc_pkg;
+              |
+xmvlog: *W,TSNSPK (./quicktest.sv,5|14): `timescale is not specified for the package.  The default timescale of 1ns/1ns will be assumed for this package.
+	package worklib.uvc_pkg:sv
+		errors: 0, warnings: 1
+	package worklib.quicktest:sv
+		errors: 0, warnings: 0
+	module worklib.test:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		uvc_pkg
+		cdns_uvmreg_utils_pkg
+		yapp_router_reg_pkg
+		uvm_nowarn_from_cmdline
+		cdns_uvm_addons
+		quicktest
+		test
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.test:sv <0x53518fe3>
+			streams:   1, words:   592
+		worklib.uvm_pkg:sv <0x557ba542>
+			streams:   8, words:  6270
+		worklib.uvm_pkg:sv <0x65aa35b4>
+			streams:   8, words:  6025
+		worklib.uvm_pkg:sv <0x32b1586c>
+			streams:   7, words:  5546
+		worklib.uvm_pkg:sv <0x23ed19b4>
+			streams:   7, words:  1445
+		worklib.uvm_pkg:sv <0x1b1b2f61>
+			streams:   9, words:  2610
+		worklib.uvm_pkg:sv <0x269bca76>
+			streams:  22, words: 48877
+		worklib.uvm_pkg:sv <0x6afbfa55>
+			streams:   7, words:  1445
+		worklib.uvm_pkg:sv <0x48568b2d>
+			streams:   7, words:  2504
+		worklib.uvm_pkg:sv <0x63079c8a>
+			streams:   7, words:  2504
+		worklib.uvm_pkg:sv <0x0324aa77>
+			streams:   9, words:  4061
+		worklib.uvm_pkg:sv <0x1b6b93a7>
+			streams:  28, words: 24471
+		worklib.uvm_pkg:sv <0x69ec69ed>
+			streams:  27, words: 23040
+		worklib.uvm_pkg:sv <0x335d31c0>
+			streams:  23, words: 21880
+		worklib.uvm_pkg:sv <0x33b9367d>
+			streams:  17, words: 11502
+		worklib.uvm_pkg:sv <0x2e6940cf>
+			streams:  26, words: 29862
+		worklib.uvm_pkg:sv <0x553059ce>
+			streams:   7, words:  1884
+		worklib.uvm_pkg:sv <0x42d21526>
+			streams:  16, words: 15989
+		worklib.uvm_pkg:sv <0x3a32a718>
+			streams:  26, words: 27097
+		worklib.uvm_pkg:sv <0x7c31f9d7>
+			streams:  25, words: 48316
+		worklib.uvm_pkg:sv <0x7321c995>
+			streams:  27, words: 29953
+		worklib.uvm_pkg:sv <0x6758ae1f>
+			streams:  26, words: 43201
+		worklib.uvm_pkg:sv <0x1f0b17b9>
+			streams:  27, words: 32427
+		worklib.uvm_pkg:sv <0x6531848b>
+			streams:  25, words: 46367
+		worklib.uvm_pkg:sv <0x7f7dc85f>
+			streams:  27, words: 34143
+		worklib.uvm_pkg:sv <0x2dd9fdc0>
+			streams:  25, words: 51861
+		worklib.uvm_pkg:sv <0x7ccac415>
+			streams:  27, words: 38235
+		worklib.uvm_pkg:sv <0x530a4964>
+			streams:  25, words: 46957
+		worklib.uvm_pkg:sv <0x3b46a7b3>
+			streams:  25, words: 49172
+		worklib.uvm_pkg:sv <0x4b925156>
+			streams:  27, words: 31602
+		worklib.uvm_pkg:sv <0x2afd30fd>
+			streams:  25, words: 45287
+		worklib.cdns_uvm_pkg:sv <0x6eff4515>
+			streams:  28, words: 32210
+		worklib.cdns_uvm_pkg:sv <0x7b51aa9f>
+			streams:   9, words:  3996
+		worklib.cdns_uvm_pkg:sv <0x7aa6816f>
+			streams:  10, words:  7470
+		worklib.uvm_pkg:sv <0x6022b1a9>
+			streams:  28, words: 51228
+		worklib.uvm_pkg:sv <0x01e90b5e>
+			streams:  26, words: 27833
+		worklib.uvm_pkg:sv <0x028dcbb7>
+			streams:  26, words: 24858
+		worklib.uvm_pkg:sv <0x168fd77e>
+			streams:  94, words: 127369
+		worklib.uvm_pkg:sv <0x4ef4176a>
+			streams:  26, words: 31558
+		worklib.cdns_uvm_addons:sv <0x1ff8eb8e>
+			streams: 348, words: 546695
+		worklib.uvm_pkg:sv <0x20f084e9>
+			streams:  24, words: 24501
+		worklib.uvm_pkg:sv <0x70c657d5>
+			streams: 401, words: 419629
+		worklib.uvm_pkg:sv <0x0cb80b53>
+			streams:  25, words: 22382
+		worklib.uvm_pkg:sv <0x704f4500>
+			streams:  24, words: 20615
+		worklib.uvm_pkg:sv <0x28218f6d>
+			streams:   7, words:  2504
+		worklib.uvm_pkg:sv <0x0b7813f7>
+			streams:  25, words: 27074
+		worklib.uvm_pkg:sv <0x350e18ee>
+			streams:  24, words: 19187
+		worklib.uvm_pkg:sv <0x7844fb5f>
+			streams:  24, words: 19187
+		worklib.uvm_pkg:sv <0x4ab13a85>
+			streams:  25, words: 32197
+		worklib.cdns_uvmreg_utils_pkg:sv <0x2f1f87e1>
+			streams:   9, words: 33193
+		worklib.uvm_pkg:sv <0x1678738e>
+			streams:  28, words: 35011
+		worklib.uvm_pkg:sv <0x039f21b4>
+			streams:  29, words: 83557
+		worklib.quicktest:sv <0x74092d52>
+			streams:   0, words:     0
+		worklib.uvc_pkg:sv <0x09198c8e>
+			streams:   0, words:     0
+		worklib.yapp_router_reg_pkg:sv <0x4d55ffa4>
+			streams: 288, words: 229476
+		worklib.cdns_uvmreg_utils_pkg:sv <0x7cb42f8a>
+			streams:   7, words:  2833
+		worklib.cdns_uvmreg_utils_pkg:sv <0x1b529fad>
+			streams:  39, words: 83159
+		worklib.cdns_uvm_addons:sv <0x2dbfd5c9>
+			streams:   0, words:     0
+		worklib.cdns_uvm_pkg:sv <0x5313393e>
+			streams: 136, words: 207395
+		worklib.cdns_uvmapi:svp <0x57becb22>
+			streams:  27, words: 28800
+		worklib.cdns_assert2uvm_pkg:sv <0x6011c108>
+			streams:   3, words:  2010
+		worklib.uvm_nowarn_from_cmdline:sv <0x0498117d>
+			streams:   9, words:  6983
+		worklib.uvm_pkg:sv <0x04f29739>
+			streams: 4789, words: 7364509
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                       1       1
+		Verilog packages:             10      10
+		Registers:                 15723   10936
+		Named events:                  4      12
+		Initial blocks:              346     174
+		Parallel blocks:              26      27
+		Assertions:                    5       6
+		Covergroup Instances:          0      18
+		SV Class declarations:       223     338
+		SV Class specializations:    441     441
+	Writing initial simulation snapshot: worklib.test:sv
+Loading snapshot worklib.test:sv .................... Done
+SVSEED default: 1
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /export/home/bdickins/cadence/installs/XCELIUM1704/tools/xcelium/files/xmsimrc
+xcelium> source /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (17.04-s014)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test access_test...
+UVM_INFO @ 0: reporter [UVM_CMDLINE_PROC] Applying config setting from the command line: +uvm_set_config_string=*,uvm_reg_generate_access_file_seq::file_name,access_file
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+include_coverage not located
+  did you mean model.router_yapp_regs?
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/additions/sv/./reg/uvm_reg_generate_access_file_seq.sv(33) @ 0: reporter@@access_seq [RegMem] generating IUS access file "access_file"
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh(72) @ 0: reporter@@access_seq [uvm_reg_mem_hdl_paths_seq] checking HDL paths for all registers/memories in model
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh(100) @ 0: reporter@@access_seq [uvm_reg_mem_hdl_paths_seq] Validating HDL paths in model for default design abstraction
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh(100) @ 0: reporter@@access_seq [uvm_reg_mem_hdl_paths_seq] Validating HDL paths in model.router_yapp_regs for default design abstraction
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh(81) @ 0: reporter@@access_seq [uvm_reg_mem_hdl_paths_seq] HDL path validation completed 
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/additions/sv/./reg/uvm_reg_generate_access_file_seq.sv(42) @ 0: reporter@@access_seq [RegMem] pass the generated file to irun via "-afile access_file"
+UVM_INFO /export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 0: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    9
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[RegMem]     2
+[TEST_DONE]     1
+[UVM_CMDLINE_PROC]     1
+[uvm_reg_mem_hdl_paths_seq]     4
+Simulation complete via $finish(1) at time 0 FS + 179
+/export/home/bdickins/cadence/installs/XCELIUM1704/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> exit
+TOOL:	xrun	17.04-s014: Exiting on Apr 29, 2019 at 14:19:12 BST  (total: 00:01:18)

@@ -1,0 +1,3 @@
+#!/bin/csh
+
+\rm -rf xcelium.d waves.shm *.log *.key

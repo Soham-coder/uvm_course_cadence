@@ -1,0 +1,1 @@
+s1(29Apr2019:14:17:54):  xrun -uvmhome default +uvm_set_config_string=*,uvm_reg_generate_access_file_seq::file_name,access_file ./cdns_uvmreg_utils_pkg.sv ./yapp_router_regs_rdb.sv ./quicktest.sv -log xrun_gen_access.log +UVM_TESTNAME=access_test 

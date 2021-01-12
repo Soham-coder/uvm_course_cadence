@@ -1,0 +1,4 @@
+gvimsv.tar contains a SystemVerilog/UVM language pack for the gvim editor,
+containing color sytax highlighting.
+
+If you wish to use this pack, copy the file to your home directory and untar.

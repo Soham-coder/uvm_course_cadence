@@ -1,0 +1,43 @@
+/*-----------------------------------------------------------------
+File name     : yapp_router_instance.txt
+Developers    : Kathleen Meade, Brian Dickinson
+Created       : 01/04/11
+Description   : lab06_vif router DUT instance with named port mapping
+Notes         : From the Cadence "SystemVerilog Advanced Verification with UVM" training
+-------------------------------------------------------------------
+Copyright Cadence Design Systems (c)2015
+-----------------------------------------------------------------*/
+
+// this is an instantiation of the yapp_router RTL module
+// copy to your hw_top_dut.sv file and fill in the port mapping where necessary
+
+  yapp_router dut(
+    .reset(),
+    .clock(),
+    .error(),
+
+    // YAPP interface
+    .in_data(),
+    .in_data_vld(),
+    .in_suspend(),
+
+    // Output Channels
+    //Channel 0
+    .data_0(),
+    .data_vld_0(),
+    .suspend_0(),
+    //Channel 1
+    .data_1(),
+    .data_vld_1(),
+    .suspend_1(),
+    //Channel 2
+    .data_2(),
+    .data_vld_2(),
+    .suspend_2(),
+
+    // HBUS Interface 
+    .haddr(),
+    .hdata(),
+    .hen(),
+    .hwr_rd());
+
